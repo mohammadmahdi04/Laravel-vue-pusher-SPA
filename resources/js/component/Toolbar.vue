@@ -11,7 +11,16 @@
             <v-toolbar-title>Title</v-toolbar-title>
 
             <v-spacer></v-spacer>
-
+            <router-link to="/forum">
+                <v-btn text>
+                    Forum
+                </v-btn>
+            </router-link>
+            <router-link to="/signup">
+                <v-btn text>
+                    Sign Up
+                </v-btn>
+            </router-link>
             <router-link to="/login">
                 <v-btn text>
                     Login
@@ -24,7 +33,16 @@
 
 <script>
 export default {
-    name: "Toolbar"
+    name: "Toolbar",
+    data(){
+        return{
+           items: [
+               {title: 'Forum' ,to:'/forum',show:true } ,
+               {title: 'Login' ,to:'/login',show:!User.loggedIn() } ,
+               {title: 'Logout' ,to:'/logout',show:!User.loggedIn() } ,
+           ]
+        }
+    }
 }
 </script>
 

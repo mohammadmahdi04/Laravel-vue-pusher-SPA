@@ -16,5 +16,8 @@ class AppStorage{
     getToken(){
         return localStorage.getItem('token');
     }
+    getUser(){
+        return localStorage.getItem('user');
+    }
 }
 export default AppStorage = new AppStorage();
