@@ -24,3 +24,5 @@ Route::post('/like/{reply}',[\App\Http\Controllers\LikeController::class,'likeIt
 Route::delete('/like/{reply}',[\App\Http\Controllers\LikeController::class,'unLikeIt']);
 Route::post('/user/login',[\App\Http\Controllers\UserController::class,'login']);
 Route::post('/user/signup',[\App\Http\Controllers\UserController::class,'signup']);
+Route::post('/notifications',[\App\Http\Controllers\NotificationController::class,'notifications']);
+Route::post('/markAsRead',[\App\Http\Controllers\NotificationController::class,'markAsRead']);

@@ -13,9 +13,11 @@
         "@nuxtjs/vuetify": "^1.11.3",
         "axios": "^0.21",
         "deepmerge": "^2.2.1",
+        "laravel-echo": "^1.10.0",
         "laravel-mix": "^6.0.6",
         "lodash": "^4.17.19",
         "postcss": "^8.1.14",
+        "pusher-js": "^7.0.3",
         "sass": "^1.32.8",
         "sass-loader": "^10.1.1",
         "vue-loader": "^15.9.5",
@@ -23,7 +25,10 @@
         "vuetify": "^2.4.4"
     },
     "dependencies": {
+        "@mdi/font": "^5.9.55",
+        "@mdi/js": "^5.9.55",
         "vue": "^2.6.12",
-        "vue-router": "^3.5.1"
+        "vue-router": "^3.5.1",
+        "vue-simplemde": "^2.0.0"
     }
 }

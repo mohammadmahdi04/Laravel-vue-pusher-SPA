@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Resources\ReplyResource;
 use App\Models\Question;
 use App\Models\Reply;
+use App\Notifications\NewReplyNotification;
 use Illuminate\Http\Request;
 
 class ReplyController extends Controller
@@ -39,6 +40,8 @@ class ReplyController extends Controller
         $reply->question_id = $question->id;
         $reply->user_id = $request->user_id;
         $reply->save();
+        $user = $question->user;
+        $user->notify(new NewReplyNotification($reply));
         return response(['reply' => new ReplyResource($reply)],201);
     }
 
@@ -67,7 +70,7 @@ class ReplyController extends Controller
      * @param  \App\Models\Reply  $reply
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Reply $reply)
+    public function update(Request $request,Question $question, Reply $reply)
     {
         $reply->update([
             'body' =>$request->body
@@ -81,8 +84,9 @@ class ReplyController extends Controller
      * @param  \App\Models\Reply  $reply
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Reply $reply)
+    public function destroy(Question $question,Reply $reply)
     {
+//        return $reply;
         $reply->delete();
         return response('Deleted',200);
     }

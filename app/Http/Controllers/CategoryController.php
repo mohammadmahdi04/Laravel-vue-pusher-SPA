@@ -31,13 +31,15 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
     public function store(Request $request)
     {
         $category = new Category();
         $category->name = $request->name;
         $category->slug = Str::slug($request->name);
         $category->save();
-        return response('Created',201);
+//        return  'here';
+        return new CategoryResource($category);
     }
 
     /**
@@ -70,7 +72,7 @@ class CategoryController extends Controller
             'name' => $request->name,
             'slug' => Str::slug($request->name),
         ]);
-        return response('Updated',202);
+        return response(new CategoryResource($category),202);
     }
 
     /**

@@ -23,7 +23,7 @@
         <script src="{{ asset('js/app.js') }}" defer></script>
     </head>
     <body>
-        <div id="app">
+        <div id="app" data-app>
             <app-home />
         </div>
     </body>

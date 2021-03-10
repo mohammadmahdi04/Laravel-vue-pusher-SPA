@@ -7,9 +7,11 @@ class User{
         const token = res.data.token
         const user = res.data.email
         AppStorage.store(user,token)
+        window.location = '/forum';
     }
-    hasToken(token){
-         if (AppStorage.getToken() === token){
+    hasToken(){
+        const token = AppStorage.getToken()
+         if (token !== 'undefined' && token != null){
              return true;
          }
          return false;
@@ -19,6 +21,7 @@ class User{
     }
     logout(){
          AppStorage.clear();
+        window.location = '/forum';
     }
 }
  export default User = new User();

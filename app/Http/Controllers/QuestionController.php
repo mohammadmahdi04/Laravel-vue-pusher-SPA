@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Resources\QuestionResource;
 use App\Models\Question;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class QuestionController extends Controller
 {
@@ -32,8 +33,14 @@ class QuestionController extends Controller
      */
     public function store(Request $request)
     {
-        Question::create($request->all());
-        return response('Created',201);
+        $question = new Question();
+        $question->title = $request->title;
+        $question->slug = Str::slug($request->title);
+        $question->body = $request->body;
+        $question->user_id = $request->user_id;
+        $question->category_id = $request->category_id;
+        $question->save();
+        return new QuestionResource($question);
     }
 
     /**
